@@ -17,7 +17,7 @@ export default function Home({}: HomeProps) {
   const [activeUseCase, setActiveUseCase] = useState<UseCaseProfile | null>(
     null,
   );
-  const [localProducts, setProducts] = useLocalStorage("products", products);
+  const [localProducts] = useLocalStorage("products", products); // poi si mette setProducts
   const selectedProductA = localProducts.find((p) => p.id === productA);
   const selectedProductB = localProducts.find((p) => p.id === productB);
 
