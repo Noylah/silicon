@@ -258,9 +258,15 @@ export default function Home({}: HomeProps) {
             <span className="text-apple-blue font-black font-mono">
               SCELTA MIGLIORE
             </span>
-            <span className="text-2xl font-black text-center">
-              {winningProduct?.name}
-            </span>
+            {winningProduct ? (
+              <span className="text-2xl font-black text-center">
+                {winningProduct?.name}
+              </span>
+            ) : (
+              <span className="text-2xl font-black text-center">
+                Punteggio Pari
+              </span>
+            )}
             <span className="text-secondary text-center">
               Il risultato è ottenuto attraverso un calcolo eseguito attraverso
               le priorità impostate nel caso d'uso.
