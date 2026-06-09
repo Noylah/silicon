@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --background: #000000;            
+  --color-apple-bg: #09090b;
+  --color-apple-sidebar: #121214;
+  --color-apple-card: #18181b;
+  --color-apple-elevated: #27272a;   
+
+  --color-apple-blue: #38bdf8;       
+  --color-apple-green: #34d399;
+  --color-apple-amber: #fbbf24; 
+  --foreground: #f4f4f5;
+  --color-secondary: #a1a1aa;
+
+  --font-apple: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
