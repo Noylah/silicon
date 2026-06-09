@@ -85,8 +85,8 @@ export default function Home({}: HomeProps) {
           </span>
         </div>
         <span className="text-secondary text-xl text-center">
-          Seleziona due macchine, analizza le specifiche al millimetro e scopri
-          quale vince in base alle tue necessità.
+          Seleziona due prodotti, analizza le specifiche' e scopri quale vince
+          in base alle tue necessità.
         </span>
         <div className="flex flex-col sm:flex-row gap-6 mt-12">
           {selectedProductA ? (
@@ -229,7 +229,9 @@ export default function Home({}: HomeProps) {
                         ? `${displayA}€`
                         : row.name === "storage"
                           ? `${displayA}GB`
-                          : displayA}
+                          : row.name === "ram"
+                            ? `${displayA}GB`
+                            : displayA}
                     </td>
                     <td className="py-4 px-4 text-center">
                       <span
@@ -247,7 +249,9 @@ export default function Home({}: HomeProps) {
                         ? `${displayB}€`
                         : row.name === "storage"
                           ? `${displayB}GB`
-                          : displayB}
+                          : row.name === "ram"
+                            ? `${displayB}GB`
+                            : displayB}
                     </td>
                   </tr>
                 );
