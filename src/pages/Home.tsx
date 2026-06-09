@@ -73,7 +73,7 @@ export default function Home({}: HomeProps) {
     <>
       <div className="flex flex-col items-center mt-12">
         <span className="font-mono text-apple-blue text-sm uppercase font-black animate-in fade-in duration-1000">
-          Silicon Studio
+          Silicon
         </span>
 
         <div className="flex flex-col items-center">
