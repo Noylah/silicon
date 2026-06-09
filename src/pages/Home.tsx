@@ -225,7 +225,11 @@ export default function Home({}: HomeProps) {
                     }`}
                   >
                     <td className="py-4 px-6 text-center text-lg text-white">
-                      {row.name === "price" ? `${displayA}€` : displayA}
+                      {row.name === "price"
+                        ? `${displayA}€`
+                        : row.name === "storage"
+                          ? `${displayA}GB`
+                          : displayA}
                     </td>
                     <td className="py-4 px-4 text-center">
                       <span
@@ -239,7 +243,11 @@ export default function Home({}: HomeProps) {
                       </span>
                     </td>
                     <td className="py-4 px-6 text-center text-lg text-white">
-                      {row.name === "price" ? `${displayB}€` : displayB}
+                      {row.name === "price"
+                        ? `${displayB}€`
+                        : row.name === "storage"
+                          ? `${displayB}GB`
+                          : displayB}
                     </td>
                   </tr>
                 );
@@ -250,8 +258,10 @@ export default function Home({}: HomeProps) {
             <span className="text-apple-blue font-black font-mono">
               SCELTA MIGLIORE
             </span>
-            <span className="text-2xl font-black">{winningProduct?.name}</span>
-            <span className="text-secondary">
+            <span className="text-2xl font-black text-center">
+              {winningProduct?.name}
+            </span>
+            <span className="text-secondary text-center">
               Il risultato è ottenuto attraverso un calcolo eseguito attraverso
               le priorità impostate nel caso d'uso.
             </span>

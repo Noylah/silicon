@@ -88,3 +88,12 @@ export const products = [
     },
   },
 ];
+
+export const highlights = [
+  { name: "price", display: "Prezzo" },
+  { name: "cpuCore", display: "Core della CPU" },
+  { name: "gpuCore", display: "Core della GPU" },
+  { name: "ram", display: "RAM" },
+  { name: "storage", display: "Archiviazione" },
+  { name: "hasFan", display: "Ventole", boolean: true },
+];

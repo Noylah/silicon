@@ -18,7 +18,7 @@ export default function App() {
         activePage={activePage}
         setActivePage={setActivePage}
       />
-      {activePage === "/home" && <Home />}
+      <div className="px-2">{activePage === "/home" && <Home />}</div>
     </div>
   );
 }
