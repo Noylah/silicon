@@ -1,15 +1,17 @@
 import { CirclePlus, LaptopMinimal } from "lucide-react";
 import { useState } from "react";
-import { defaultProfiles } from "../constants/defaultData";
+import { type UseCase } from "../constants/defaultData";
 import { products } from "../constants/defaultData";
 import { highlights } from "../constants/defaultData";
 import { calculateParamScore } from "../utils/calculate";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import type UseCaseProfile from "../types/products";
 
-interface HomeProps {}
+interface HomeProps {
+  localUseCases: UseCase[];
+}
 
-export default function Home({}: HomeProps) {
+export default function Home({ localUseCases }: HomeProps) {
   const [selectingTarget, setTarget] = useState<"A" | "B" | null>(null);
   const [productA, setProductA] = useState<number | null>(null);
   const [productB, setProductB] = useState<number | null>(null);
@@ -17,7 +19,7 @@ export default function Home({}: HomeProps) {
   const [activeUseCase, setActiveUseCase] = useState<UseCaseProfile | null>(
     null,
   );
-  const [localProducts] = useLocalStorage("products", products); // poi si mette setProducts
+  const [localProducts] = useLocalStorage("products", products);
   const selectedProductA = localProducts.find((p) => p.id === productA);
   const selectedProductB = localProducts.find((p) => p.id === productB);
 
@@ -154,7 +156,7 @@ export default function Home({}: HomeProps) {
         </div>
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-3 justify-center mt-4 py-3 px-4 w-full max-w-4xl mx-auto">
-        {defaultProfiles.map((profile) => {
+        {localUseCases.map((profile) => {
           const isActive = activeUseCase === profile;
 
           return (

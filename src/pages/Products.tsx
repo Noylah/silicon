@@ -4,7 +4,7 @@ import {
   deleteProductFromList,
   addProductToList,
   updateProductSpecInList,
-} from "../utils/productUtils";
+} from "../utils/listUtils";
 import type { Product } from "../constants/defaultData";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Plus, Save, Trash2, RotateCcw } from "lucide-react";

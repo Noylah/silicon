@@ -2,6 +2,7 @@ import type UseCaseProfile from "../types/products";
 
 export const defaultProfiles: UseCaseProfile[] = [
   {
+    id: 0,
     name: "Studente",
     highlights: {
       price: "min",
@@ -13,6 +14,7 @@ export const defaultProfiles: UseCaseProfile[] = [
     },
   },
   {
+    id: 1,
     name: "Gamer",
     highlights: {
       price: null,
@@ -24,6 +26,7 @@ export const defaultProfiles: UseCaseProfile[] = [
     },
   },
   {
+    id: 2,
     name: "Designer",
     highlights: {
       price: null,
@@ -35,6 +38,7 @@ export const defaultProfiles: UseCaseProfile[] = [
     },
   },
   {
+    id: 3,
     name: "Developer",
     highlights: {
       price: null,
@@ -46,6 +50,7 @@ export const defaultProfiles: UseCaseProfile[] = [
     },
   },
 ];
+export type UseCase = (typeof defaultProfiles)[number];
 
 export const products = [
   {

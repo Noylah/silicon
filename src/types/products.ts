@@ -1,4 +1,5 @@
 export default interface UseCaseProfile {
+  id: number;
   name: string;
   highlights: {
     price: "max" | "min" | null;
