@@ -6,7 +6,15 @@ import {
   updateUseCaseInList,
 } from "../utils/listUtils";
 import type { UseCase } from "../constants/defaultData";
-import { Plus, Save, Trash2, RotateCcw } from "lucide-react";
+import {
+  Plus,
+  Save,
+  Trash2,
+  RotateCcw,
+  DiamondMinus,
+  Check,
+  TriangleAlert,
+} from "lucide-react";
 
 interface ProductsProps {
   localUseCases: UseCase[];
@@ -179,47 +187,167 @@ export default function Products({
                     <td className="py-4 px-6 text-center text-lg text-white">
                       {useCase.name}
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.price === "max"
-                        ? "⚠️ MASSIMO"
-                        : useCase.highlights.price === "min"
-                          ? "✅ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* PREZZO */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Prezzo per ${useCase.name}: ${useCase.highlights.price === "max" ? "Massimo budget" : useCase.highlights.price === "min" ? "Minimo costo" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.price === "max" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>MASSIMO</span>
+                            </>
+                          ) : useCase.highlights.price === "min" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>MINIMO</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.cpuCore === "max"
-                        ? "✅ MASSIMO"
-                        : useCase.highlights.cpuCore === "min"
-                          ? "⚠️ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* CORE CPU */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Core CPU per ${useCase.name}: ${useCase.highlights.cpuCore === "max" ? "Massime prestazioni" : useCase.highlights.cpuCore === "min" ? "Minimo hardware" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.cpuCore === "max" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>MASSIMO</span>
+                            </>
+                          ) : useCase.highlights.cpuCore === "min" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>MINIMO</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.gpuCore === "max"
-                        ? "✅ MASSIMO"
-                        : useCase.highlights.gpuCore === "min"
-                          ? "⚠️ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* CORE GPU */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Core GPU per ${useCase.name}: ${useCase.highlights.gpuCore === "max" ? "Massime prestazioni grafiche" : useCase.highlights.gpuCore === "min" ? "Minimo hardware grafico" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.gpuCore === "max" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>MASSIMO</span>
+                            </>
+                          ) : useCase.highlights.gpuCore === "min" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>MINIMO</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.ram === "max"
-                        ? "✅ MASSIMO"
-                        : useCase.highlights.ram === "min"
-                          ? "⚠️ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* RAM */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Memoria RAM per ${useCase.name}: ${useCase.highlights.ram === "max" ? "Massima memoria" : useCase.highlights.ram === "min" ? "Minima memoria" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.ram === "max" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>MASSIMO</span>
+                            </>
+                          ) : useCase.highlights.ram === "min" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>MINIMO</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.storage === "max"
-                        ? "✅ MASSIMO"
-                        : useCase.highlights.storage === "min"
-                          ? "⚠️ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* ARCHIVIAZIONE */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Spazio di archiviazione per ${useCase.name}: ${useCase.highlights.storage === "max" ? "Massimo spazio" : useCase.highlights.storage === "min" ? "Minimo spazio" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.storage === "max" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>MASSIMO</span>
+                            </>
+                          ) : useCase.highlights.storage === "min" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>MINIMO</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
-                    <td className="py-4 px-6 text-center text-sm font-mono font-bold text-white/80">
-                      {useCase.highlights.hasFan === "max"
-                        ? "✅ MASSIMO"
-                        : useCase.highlights.hasFan === "min"
-                          ? "⚠️ MINIMO"
-                          : "🔹 NESSUNA"}
+
+                    {/* VENTOLE */}
+                    <td className="py-4 px-6 text-center text-sm font-bold text-white/80">
+                      <div
+                        className="flex flex-col flex-wrap w-full items-center justify-center"
+                        aria-label={`Gestione ventole per ${useCase.name}: ${useCase.highlights.hasFan === "max" ? "Richiede ventola" : useCase.highlights.hasFan === "min" ? "Preferenza Fanless" : "Nessuna preferenza"}`}
+                      >
+                        <div
+                          aria-hidden="true"
+                          className="flex flex-col items-center"
+                        >
+                          {useCase.highlights.hasFan === "max" ? (
+                            <>
+                              <Check className="text-apple-blue stroke-3" />
+                              <span>VENTOLA</span>
+                            </>
+                          ) : useCase.highlights.hasFan === "min" ? (
+                            <>
+                              <TriangleAlert className="text-yellow-500" />
+                              <span>FANLESS</span>
+                            </>
+                          ) : (
+                            <DiamondMinus />
+                          )}
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 );

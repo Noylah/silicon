@@ -1,11 +1,10 @@
 import { CirclePlus, LaptopMinimal } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { type UseCase } from "../constants/defaultData";
 import { products } from "../constants/defaultData";
 import { highlights } from "../constants/defaultData";
 import { calculateParamScore } from "../utils/calculate";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import type UseCaseProfile from "../types/products";
 
 interface HomeProps {
   localUseCases: UseCase[];
@@ -16,9 +15,7 @@ export default function Home({ localUseCases }: HomeProps) {
   const [productA, setProductA] = useState<number | null>(null);
   const [productB, setProductB] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeUseCase, setActiveUseCase] = useState<UseCaseProfile | null>(
-    null,
-  );
+  const [activeUseCase, setActiveUseCase] = useState<UseCase | null>(null);
   const [localProducts] = useLocalStorage("products", products);
   const selectedProductA = localProducts.find((p) => p.id === productA);
   const selectedProductB = localProducts.find((p) => p.id === productB);
@@ -44,32 +41,35 @@ export default function Home({ localUseCases }: HomeProps) {
     setSearchQuery("");
   }
 
-  let totalScoreA = 0;
-  let totalScoreB = 0;
-  let winningProduct: (typeof localProducts)[0] | null = null;
-
-  if (selectedProductA && selectedProductB) {
-    highlights.forEach((row) => {
-      const valA =
-        selectedProductA.specs[row.name as keyof typeof selectedProductA.specs];
-      const valB =
-        selectedProductB.specs[row.name as keyof typeof selectedProductB.specs];
-      const preference = activeUseCase
-        ? activeUseCase.highlights[
-            row.name as keyof typeof activeUseCase.highlights
-          ]
-        : null;
-      const result = calculateParamScore(valA, valB, preference, row.name);
-      totalScoreA += result.scoreA;
-      totalScoreB += result.scoreB;
-    });
-    winningProduct =
-      totalScoreA > totalScoreB
+  const winningProduct = useMemo(() => {
+    if (selectedProductA && selectedProductB) {
+      let totalScoreA = 0;
+      let totalScoreB = 0;
+      highlights.forEach((row) => {
+        const valA =
+          selectedProductA.specs[
+            row.name as keyof typeof selectedProductA.specs
+          ];
+        const valB =
+          selectedProductB.specs[
+            row.name as keyof typeof selectedProductB.specs
+          ];
+        const preference = activeUseCase
+          ? activeUseCase.highlights[
+              row.name as keyof typeof activeUseCase.highlights
+            ]
+          : null;
+        const result = calculateParamScore(valA, valB, preference, row.name);
+        totalScoreA += result.scoreA;
+        totalScoreB += result.scoreB;
+      });
+      return totalScoreA > totalScoreB
         ? selectedProductA
         : totalScoreB > totalScoreA
           ? selectedProductB
           : null;
-  }
+    }
+  }, [selectedProductA, selectedProductB, activeUseCase]);
 
   return (
     <>
@@ -220,10 +220,10 @@ export default function Home({ localUseCases }: HomeProps) {
                 return (
                   <tr
                     key={row.name}
-                    className={`transition-colors duration-200 hover:bg-white/2 ${
+                    className={`transition-colors duration-200 ${
                       isHighlighted
                         ? "bg-apple-blue/5 hover:bg-apple-blue/10"
-                        : ""
+                        : "hover:bg-white/2"
                     }`}
                   >
                     <td className="py-4 px-6 text-center text-lg text-white">
