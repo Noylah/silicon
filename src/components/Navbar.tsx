@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "./Logo";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 
 interface NavbarProps {
   links?: { label: string; href: string }[];
