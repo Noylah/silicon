@@ -25,10 +25,10 @@ export default function Navbar({
                 return (
                   <a
                     key={link.href}
-                    className={`hover:text-white cursor-pointer transition-colors duration-500 text-sm ${
+                    className={`cursor-pointer transition-colors duration-500 text-sm ${
                       activePage === link.href
-                        ? "text-white font-medium"
-                        : "text-white/60"
+                        ? "text-apple-blue/90 font-extrabold hover:text-apple-blue"
+                        : "text-white/60 hover:text-white"
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
