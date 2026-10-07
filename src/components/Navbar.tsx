@@ -44,7 +44,6 @@ export default function Navbar({
             className="flex sm:hidden w-4 h-4 hover:text-white cursor-pointer transition-colors duration-500"
             onClick={() => setMobileMenu(!mobileMenu)}
           />
-          <Search className="w-4 h-4 hover:text-white cursor-pointer transition-colors duration-500" />
         </div>
       </div>
       {mobileMenu && (
