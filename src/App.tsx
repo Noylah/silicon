@@ -1,41 +1,29 @@
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Products from "./pages/Products";
-import UseCases from "./pages/UseCases";
+import Footer from "./components/Footer";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { defaultProfiles, type UseCase } from "./constants/defaultData";
 
-const navigationLinks = [
-  { label: "Home", href: "/home" },
-  { label: "Prodotti", href: "/products" },
-  { label: "Casi d'Uso", href: "/usecases" },
-  { label: "Algoritmo", href: "/algoritmo" },
-];
+export interface AppOutletContext {
+  localUseCases: UseCase[];
+  setLocalUseCases: (
+    value: UseCase[] | ((current: UseCase[]) => UseCase[]),
+  ) => void;
+}
 
 export default function App() {
-  const [activePage, setActivePage] = useState("/home");
   const [localUseCases, setLocalUseCases] = useLocalStorage<UseCase[]>(
     "useCases",
     defaultProfiles,
   );
+
   return (
-    <div className="selection:bg-apple-blue/20 selection:text-white font-apple">
-      <Navbar
-        links={navigationLinks}
-        activePage={activePage}
-        setActivePage={setActivePage}
-      />
-      <div className="px-2">
-        {activePage === "/home" && <Home localUseCases={localUseCases} />}
-        {activePage === "/products" && <Products />}
-        {activePage === "/usecases" && (
-          <UseCases
-            localUseCases={localUseCases}
-            setLocalUseCases={setLocalUseCases}
-          />
-        )}
-      </div>
+    <div className="flex min-h-screen flex-col font-apple selection:bg-apple-blue/20 selection:text-white">
+      <Navbar />
+      <main className="w-full flex-1 px-2">
+        <Outlet context={{ localUseCases, setLocalUseCases }} />
+      </main>
+      <Footer />
     </div>
   );
 }

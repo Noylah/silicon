@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function Logo() {
-    return (
-        <div className="flex space-x-2 px-2 p-1 items-center bg-apple-card/30 w-fit rounded-md">
-            <img width={24} src="/favicon.svg"/>
-            <div className="flex items-baseline gap-1">
-                <span className="font-black text-sm tracking-wide">SILICON<span className="text-[10px] uppercase text-apple-blue">LAB</span></span>
-            </div>
-        </div>
-    );
+  return (
+    <Link
+      to="/"
+      aria-label="Silicon Lab - Home"
+      className="flex w-fit items-center space-x-2 rounded-md bg-apple-card/30 p-1 px-2"
+    >
+      <img width={24} height={24} src="/favicon.svg" alt="" />
+      <span className="text-sm font-black tracking-wide">
+        SILICON<span className="text-[10px] uppercase text-apple-blue">LAB</span>
+      </span>
+    </Link>
+  );
 }

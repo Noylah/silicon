@@ -1,5 +1,11 @@
-import { CirclePlus, LaptopMinimal } from "lucide-react";
+import {
+  ArrowRight,
+  CirclePlus,
+  LaptopMinimal,
+  Sparkles,
+} from "lucide-react";
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { type UseCase } from "../constants/defaultData";
 import { products } from "../constants/defaultData";
 import { highlights } from "../constants/defaultData";
@@ -73,110 +79,124 @@ export default function Home({ localUseCases }: HomeProps) {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-12">
-        <span className="font-mono text-apple-blue text-sm uppercase font-black animate-in fade-in duration-1000">
-          Silicon
-        </span>
-
-        <div className="flex flex-col items-center">
-          <span className="text-4xl md:text-6xl font-black tracking-tight text-white max-w-3xl leading-tight animate-in fade-in duration-1000 text-center">
-            Ottimizza la tua ricerca.
-          </span>
-          <span className="text-4xl md:text-6xl font-black tracking-tight text-white max-w-3xl leading-none animate-in fade-in duration-1000 text-center mb-3">
-            Risparmia, confronta.
-          </span>
+      <section className="relative mx-auto mt-10 flex max-w-6xl flex-col items-center overflow-hidden rounded-[2rem] px-5 pb-12 pt-10 sm:mt-14 sm:px-10 sm:pb-16 sm:pt-14">
+        <div
+          aria-hidden="true"
+          />
+        <div
+          aria-hidden="true"
+        />
+        <div className="relative flex flex-col items-center">
+          <h1 className="max-w-4xl text-center text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            La scelta giusta,
+            <span className="block bg-gradient-to-r from-cyan-200 via-sky-400 to-indigo-300 bg-clip-text pb-2 text-transparent">
+              senza complicazioni.
+            </span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-center text-base leading-relaxed text-slate-300 sm:text-lg">
+            Metti a confronto due laptop, dai priorità a quello che conta per
+            te e scopri come si comportano, specifica per specifica.
+          </p>
+          <Link
+            to="/algoritmo"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cyan-200/80 transition-colors hover:text-cyan-100"
+          >
+            Scopri come funziona il punteggio
+            <ArrowRight size={15} aria-hidden="true" />
+          </Link>
         </div>
-        <span className="text-secondary text-xl text-center">
-          Seleziona due prodotti, analizza le specifiche' e scopri quale vince
-          in base alle tue necessità.
-        </span>
-        <div className="flex flex-col sm:flex-row gap-6 mt-12">
+        <div className="relative mt-10 flex w-full flex-col justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-6">
           {selectedProductA ? (
             <div
-              className="bg-apple-card/40 border border-apple-elevated/20 rounded-2xl p-8 min-w-62.5 flex flex-col items-center justify-center hover:border-apple-elevated/50 transition-colors duration-300 group cursor-pointer"
+              className="group flex min-h-40 min-w-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/[0.04] p-7 shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:bg-white/[0.07] sm:min-w-64 sm:p-8"
               onClick={() => setTarget("A")}
             >
-              <div className="w-12 h-12 rounded-xl bg-apple-card border flex items-center justify-center text-apple-blue border-apple-blue/50 transition-colors duration-300 mb-4 shadow-sm">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-200/20 bg-cyan-200/10 text-cyan-200 transition-colors group-hover:bg-cyan-200/15">
                 <LaptopMinimal />
               </div>
-              <span className="text-sm font-regular text-white">
+              <span className="text-center text-sm font-medium text-white">
                 {selectedProductA.name}
               </span>
-              <span className="text-xs text-apple-blue">
+              <span className="mt-1 text-xs text-cyan-200">
                 Clicca per modificare
               </span>
             </div>
           ) : (
             <div
-              className="bg-apple-card/40 border border-apple-elevated/20 rounded-2xl p-8 min-w-62.5 flex flex-col items-center justify-center hover:border-apple-elevated/50 transition-colors duration-300 group cursor-pointer"
+              className="group flex min-h-40 min-w-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/[0.025] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:bg-cyan-200/[0.04] sm:min-w-64 sm:p-8"
               onClick={() => setTarget("A")}
             >
-              <div className="w-12 h-12 rounded-xl bg-apple-card border border-apple-elevated/40 flex items-center justify-center text-white/40 group-hover:text-apple-blue group-hover:border-apple-blue/50 transition-colors duration-300 mb-4 shadow-sm">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/40 transition-colors group-hover:border-cyan-200/40 group-hover:text-cyan-200">
                 <CirclePlus />
               </div>
-              <span className="text-sm font-regular text-white">
+              <span className="text-sm font-medium text-white">
                 Seleziona Prodotto A
               </span>
-              <span className="text-xs text-secondary">
+              <span className="mt-1 text-xs text-slate-400">
                 Scegli il primo prodotto
               </span>
             </div>
           )}
           {selectedProductB ? (
             <div
-              className="bg-apple-card/40 border border-apple-elevated/20 rounded-2xl p-8 min-w-62.5 flex flex-col items-center justify-center hover:border-apple-elevated/50 transition-colors duration-300 group cursor-pointer"
+              className="group flex min-h-40 min-w-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/[0.04] p-7 shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:bg-white/[0.07] sm:min-w-64 sm:p-8"
               onClick={() => setTarget("B")}
             >
-              <div className="w-12 h-12 rounded-xl bg-apple-card border flex items-center justify-center text-apple-blue border-apple-blue/50 transition-colors duration-300 mb-4 shadow-sm">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-200/20 bg-cyan-200/10 text-cyan-200 transition-colors group-hover:bg-cyan-200/15">
                 <LaptopMinimal />
               </div>
-              <span className="text-sm font-regular text-white">
+              <span className="text-center text-sm font-medium text-white">
                 {selectedProductB.name}
               </span>
-              <span className="text-xs text-apple-blue">
+              <span className="mt-1 text-xs text-cyan-200">
                 Clicca per modificare
               </span>
             </div>
           ) : (
             <div
-              className="bg-apple-card/40 border border-apple-elevated/20 rounded-2xl p-8 min-w-62.5 flex flex-col items-center justify-center hover:border-apple-elevated/50 transition-colors duration-300 group cursor-pointer"
+              className="group flex min-h-40 min-w-0 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/[0.025] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:bg-cyan-200/[0.04] sm:min-w-64 sm:p-8"
               onClick={() => setTarget("B")}
             >
-              <div className="w-12 h-12 rounded-xl bg-apple-card border border-apple-elevated/40 flex items-center justify-center text-white/40 group-hover:text-apple-blue group-hover:border-apple-blue/50 transition-colors duration-300 mb-4 shadow-sm">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/40 transition-colors group-hover:border-cyan-200/40 group-hover:text-cyan-200">
                 <CirclePlus />
               </div>
-              <span className="text-sm font-regular text-white">
+              <span className="text-sm font-medium text-white">
                 Seleziona Prodotto B
               </span>
-              <span className="text-xs text-secondary">
+              <span className="mt-1 text-xs text-slate-400">
                 Scegli il secondo prodotto
               </span>
             </div>
           )}
         </div>
-      </div>
-      <div className="flex flex-wrap gap-x-4 gap-y-3 justify-center mt-4 py-3 px-4 w-full max-w-4xl mx-auto">
+      </section>
+      <div
+        aria-label="Filtra il confronto per caso d'uso"
+        className="mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-2 px-4 py-3"
+      >
         {localUseCases.map((profile) => {
           const isActive = activeUseCase === profile;
 
           return (
-            <div
-              className={`flex items-center justify-center cursor-pointer px-4 py-2 rounded-lg border transition-colors duration-300 ${
+            <button
+              type="button"
+              aria-pressed={isActive}
+              className={`flex cursor-pointer items-center justify-center rounded-full border px-4 py-2 transition-all duration-300 ${
                 isActive
-                  ? "bg-apple-card text-white border-apple-blue/80 shadow-md"
-                  : "bg-apple-card/20 text-secondary hover:bg-apple-card/80 border-white/20"
+                  ? "border-cyan-200/50 bg-cyan-200/10 text-cyan-100 shadow-md shadow-cyan-950/20"
+                  : "border-white/10 bg-white/[0.03] text-slate-400 hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
               }`}
               onClick={() => setActiveUseCase(isActive ? null : profile)}
               key={profile.name}
             >
               <span className="text-sm font-medium">{profile.name}</span>
-            </div>
+            </button>
           );
         })}
       </div>
       {selectedProductA && selectedProductB && (
-        <div className="w-full max-w-4xl mx-auto mt-12 overflow-hidden bg-apple-card/20 backdrop-blur-md border border-apple-elevated/10 rounded-2xl shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-500 mb-12">
-          <table className="w-full border-collapse text-left">
+        <div className="mx-auto mb-12 mt-8 w-full max-w-5xl overflow-x-auto rounded-2xl border border-white/10 bg-slate-950/45 shadow-2xl shadow-black/20 backdrop-blur-md animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <table className="w-full min-w-[42rem] border-collapse text-left">
             <thead>
               <tr className="border-b border-white/10 bg-white/2">
                 <th className="py-5 px-6 text-center w-1/3 text-white text-base font-bold tracking-tight">
