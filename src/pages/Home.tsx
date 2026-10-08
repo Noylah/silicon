@@ -2,7 +2,6 @@ import {
   ArrowRight,
   CirclePlus,
   LaptopMinimal,
-  Sparkles,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -79,20 +78,14 @@ export default function Home({ localUseCases }: HomeProps) {
 
   return (
     <>
-      <section className="relative mx-auto mt-10 flex max-w-6xl flex-col items-center overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/40 px-5 pb-12 pt-10 shadow-2xl shadow-cyan-950/20 backdrop-blur-sm sm:mt-14 sm:px-10 sm:pb-16 sm:pt-14">
+      <section className="relative mx-auto mt-10 flex max-w-6xl flex-col items-center overflow-hidden rounded-[2rem] px-5 pb-12 pt-10 sm:mt-14 sm:px-10 sm:pb-16 sm:pt-14">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl"
-        />
+          />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"
         />
         <div className="relative flex flex-col items-center">
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-200/20 bg-cyan-200/5 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-200">
-            <Sparkles size={14} aria-hidden="true" />
-            Silicon Lab · laptop comparison
-          </span>
           <h1 className="max-w-4xl text-center text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
             La scelta giusta,
             <span className="block bg-gradient-to-r from-cyan-200 via-sky-400 to-indigo-300 bg-clip-text pb-2 text-transparent">
